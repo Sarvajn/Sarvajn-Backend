@@ -5,7 +5,7 @@
   "description": "Authentication Backend available for Web App",
   "main": "index.js",
   "author": "Anurag Bhatt",
-  "license": "MIT",
+  "license": "AGPL-3.0",
   "dependencies": {
     "dotenv": "^17.2.3",
     "express": "^5.2.1"

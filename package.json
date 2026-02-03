@@ -1,6 +1,7 @@
 {
   "name": "sarvajn-backend",
   "private": true,
+  "license": "AGPL-3.0",
   "scripts": {
     "start": "turbo run start",
     "build": "turbo run build",
