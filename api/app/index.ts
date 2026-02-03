@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express, { type Express, type Request, type Response } from "express";
 const app: Express = express();
+app.disable("x-powered-by");
 
 const port = process.env.PORT || 2000;
 

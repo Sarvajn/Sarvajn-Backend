@@ -1,5 +1,5 @@
-export interface response {
-    id: string;
-    status: string;
-    message: string;
+export interface Response {
+  id: string;
+  status: string;
+  message: string;
 }
