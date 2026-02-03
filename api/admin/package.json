@@ -1,7 +1,7 @@
 {
   "name": "sarvajn-admin",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Admin Application Backend available for Admin App",
   "main": "index.js",
   "author": "Anurag Bhatt",
