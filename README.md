@@ -2,6 +2,9 @@
 
 Monorepo framework available for Sarvajn Backend, powered by [TurboRepo](https://turborepo.org/) and manages versioning with [Lerna](https://lerna.js.org/).
 
+Code Reviews:
+[SonarQube](https://sonarcloud.io/project/overview?id=Sarvajn_Sarvajn-Backend)
+
 ## 🏗 Architecture
 
 The project contains 4 microservices and 2 shared libraries, organized as follows:
