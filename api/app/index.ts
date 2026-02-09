@@ -12,3 +12,5 @@ app.listen(port, () => {
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
 });
+
+import { AdminController, connectDB } from "@sarvajn/db";
