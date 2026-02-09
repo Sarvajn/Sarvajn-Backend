@@ -28,5 +28,7 @@ const baseLogger = winston.createLogger({
   ],
 });
 
-export default (meta: { file?: string; class?: string }) =>
+const logger = (meta: { file?: string; class?: string }) =>
   baseLogger.child(meta);
+
+export default logger;
