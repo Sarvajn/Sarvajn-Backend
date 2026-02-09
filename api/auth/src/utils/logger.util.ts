@@ -7,7 +7,7 @@ const logFormat = printf(
   ({ level, message, timestamp, service, file, ...metadata }) => {
     const fileOrClass = file || metadata.class;
     const prefix = fileOrClass ? ` [${fileOrClass}]` : "";
-    return `[${timestamp}] [${service}]${prefix} ${message}`;
+    return `[${timestamp}] [${level.toUpperCase()}] [${service}]${prefix} ${message}`;
   },
 );
 

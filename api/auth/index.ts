@@ -6,7 +6,7 @@ import { prisma } from "./src/libs/prisma.lib.js";
 import logger from "./src/utils/logger.util.js";
 
 const log = logger({});
-const PORT = process.env.PORT || 1000;
+const PORT = Number(process.env.PORT) || 1000;
 
 try {
   await prisma.$queryRaw`SELECT 1`;
