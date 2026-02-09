@@ -1,14 +1,20 @@
 import "dotenv/config";
-import express, { type Express, type Request, type Response } from "express";
-const app: Express = express();
-app.disable("x-powered-by");
 
-const port = process.env.PORT || 1000;
+import app from "./src/app.js";
+import { prisma } from "./src/libs/prisma.lib.js";
 
-app.listen(port, () => {
-  console.log(`Auth server started on port ${port}`);
-});
+import logger from "./src/utils/logger.util.js";
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!");
-});
+const log = logger({});
+const PORT = Number(process.env.PORT) || 1000;
+
+try {
+  await prisma.$queryRaw`SELECT 1`;
+  log.info("Database connection established");
+  app.listen(PORT, () => {
+    log.info(`Server is running on port ${PORT}`);
+  });
+} catch (error) {
+  log.error(`Failed to connect to the database: ${error}`);
+  process.exit(1);
+}
