@@ -7,7 +7,7 @@ Code Reviews:
 
 ## 🏗 Architecture
 
-The project contains 4 microservices and 2 shared libraries, organized as follows:
+The project contains 4 microservices and 3 shared libraries, organized as follows:
 
 ### Microservices (`api/`)
 
@@ -24,6 +24,7 @@ The project contains 4 microservices and 2 shared libraries, organized as follow
 | :--------------------- | :------------------- | :------------------------ |
 | **@sarvajn/interface** | `packages/interface` | Shared Types & Interfaces |
 | **@sarvajn/types**     | `packages/types`     | Common DTOs & Schemas     |
+| **@sarvajn/schema**    | `packages/schema`    | Zod Validation Schemas    |
 
 ---
 

@@ -11,7 +11,7 @@ const BaseModuleSchema = z
   .extend(timestamp);
 
 export const AdminModuleSchema = BaseModuleSchema.extend({
-  isPublished: z.string(),
+  isPublished: z.boolean(),
   publishedAt: z.date(),
 });
 export type AdminModule = z.infer<typeof AdminModuleSchema>;

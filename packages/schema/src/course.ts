@@ -14,12 +14,12 @@ const BaseCourseSchema = z
   .extend(timestamp);
 
 export const AdminCourseSchema = BaseCourseSchema.extend({
-  isPublished: z.string(),
+  isPublished: z.boolean(),
   publishedAt: z.date(),
 });
 export type AdminCourse = z.infer<typeof AdminCourseSchema>;
 
 export const CourseSchema = BaseCourseSchema.extend({
-  ennrollment: z.number().default(0),
+  enrollment: z.number().default(0),
 });
 export type Course = z.infer<typeof CourseSchema>;

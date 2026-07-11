@@ -19,7 +19,7 @@ const BaseChapterSchema = z
   .extend(timestamp);
 
 export const AdminChapterSchema = BaseChapterSchema.extend({
-  isPublished: z.string(),
+  isPublished: z.boolean(),
   publishedAt: z.date(),
 });
 export type AdminChapter = z.infer<typeof AdminChapterSchema>;

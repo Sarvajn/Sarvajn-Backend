@@ -17,7 +17,7 @@ export const QuestionAttemptSchema = z.object({
       answer: z.array(z.string()),
     }),
   ]),
-  score: z.number().min(0).max(0),
+  score: z.number().min(0).max(100),
   createdAt: z.date(),
 });
 
@@ -25,7 +25,7 @@ export const QuizAttemptSchema = z
   .object({
     id: z.uuid(),
     quiz: z.uuid(),
-    bestScore: z.number().min(0).max(0),
+    bestScore: z.number().min(0).max(100),
     attempts: z.array(QuestionAttemptSchema),
   })
   .extend(timestamp);
