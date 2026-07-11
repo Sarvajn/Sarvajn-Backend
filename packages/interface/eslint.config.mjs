@@ -1,2 +1,2 @@
-/** @type {import("eslint").Linter.Config} */
-export default config;
+import { defineConfig } from 'eslint/config';
+export default defineConfig([]);
