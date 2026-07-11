@@ -11,19 +11,19 @@ The project contains 4 microservices and 2 shared libraries, organized as follow
 
 ### Microservices (`api/`)
 
-| Service | Path | Default Port | Description |
-| :--- | :--- | :--- | :--- |
-| **Auth** | `api/auth` | `1000` | Authentication & User Management |
-| **App** | `api/app` | `2000` | Main Application Logic |
-| **Admin** | `api/admin` | `3000` | Admin Dashboard Backend |
-| **Quiz** | `api/quiz` | `4000` | Quiz Management Engine |
+| Service   | Path        | Default Port | Description                      |
+| :-------- | :---------- | :----------- | :------------------------------- |
+| **Auth**  | `api/auth`  | `1000`       | Authentication & User Management |
+| **App**   | `api/app`   | `2000`       | Main Application Logic           |
+| **Admin** | `api/admin` | `3000`       | Admin Dashboard Backend          |
+| **Quiz**  | `api/quiz`  | `4000`       | Quiz Management Engine           |
 
 ### Shared Libraries (`packages/`)
 
-| Package | Path | Description |
-| :--- | :--- | :--- |
+| Package                | Path                 | Description               |
+| :--------------------- | :------------------- | :------------------------ |
 | **@sarvajn/interface** | `packages/interface` | Shared Types & Interfaces |
-| **@sarvajn/types** | `packages/types` | Common DTOs & Schemas |
+| **@sarvajn/types**     | `packages/types`     | Common DTOs & Schemas     |
 
 ---
 
@@ -46,6 +46,7 @@ yarn dev
 ```
 
 This will start:
+
 - Auth: http://localhost:1000
 - App: http://localhost:2000
 - Admin: http://localhost:3000
@@ -66,6 +67,7 @@ yarn build
 We use [Lerna](https://lerna.js.org/) for independent versioning of packages based on [Conventional Commits](https://www.conventionalcommits.org/).
 
 ### How it works
+
 1.  Make changes to your code.
 2.  Commit with convenient messages (e.g., `feat: login api`, `fix: token bug`).
 3.  Run the release script.
@@ -79,6 +81,7 @@ yarn lerna:bump
 ```
 
 This will:
+
 1.  Analyze your commits since the last tag.
 2.  Update `package.json` version for changed packages (and their dependents).
 3.  Update `CHANGELOG.md`.
@@ -99,6 +102,7 @@ Store your `.env` file in the root of the respective service directory:
 - `api/quiz/.env`
 
 Example `.env`:
+
 ```env
 PORT=1000
 DATABASE_URL=...
@@ -115,7 +119,9 @@ To add a package (e.g., `axios`) to a specific service (e.g., `api/auth`):
 ```sh
 yarn workspace sarvajn-auth add axios
 ```
+
 _Or navigate to the directory and run yarn add:_
+
 ```sh
 cd api/auth
 yarn add axios
@@ -128,10 +134,12 @@ To add a tool available to the entire repo (e.g., `husky`, `eslint`):
 ```sh
 yarn add -D -W husky
 ```
+
 _The `-W` flag allows installing in the workspace root._
 
 ### Internal Dependencies
 
 To use a shared package (e.g., using `@sarvajn/interface` inside `api/auth`):
+
 1.  Ensure `@sarvajn/interface` is listed in `package.json` of `api/auth`.
 2.  Run `yarn install`.

@@ -1,5 +1,5 @@
 export type response = {
-    id: string;
-    status: string;
-    message: string;
-}
+  id: string;
+  status: string;
+  message: string;
+};
