@@ -20,7 +20,7 @@
     "typescript": "5.9.2"
   },
   "dependencies": {
-    "mongo": "^0.1.0",
+    "mongodb": "^7.5.0",
     "zod": "^4.4.3"
   }
 }
