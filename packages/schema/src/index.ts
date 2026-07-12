@@ -1,3 +1,12 @@
+export * from "./user";
+export * from "./course";
+export * from "./module";
+export * from "./chapter";
+export * from "./quiz";
+export * from "./progress";
+export * from "./quiz-attempt";
+export * from "./certificate";
+
 import * as user from "./user";
 import * as course from "./course";
 import * as courseModule from "./module";
