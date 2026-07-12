@@ -7,6 +7,7 @@ const BaseUserSchema = z
     email: z.email(),
     password: z.string(),
     isActive: z.boolean(),
+    refreshToken: z.string()
   })
   .extend(timestamp);
 
