@@ -1,5 +1,1 @@
-import * as config from "./environment"
-
-export {
-    config
-}
+export * as config from "./environment"
