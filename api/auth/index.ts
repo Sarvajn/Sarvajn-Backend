@@ -14,7 +14,7 @@ import { logger } from "./src/utils/logger";
 
   // Initialize all Collections
   await initializeCollections(db);
-  logger.info("Initialied collections for Auth-Service")
+  logger.info("Initialized collections for Auth-Service")
 
   app.listen(config.env.PORT, () => {
     logger.info(`Auth Service Started on Port ${config.env.PORT}`)

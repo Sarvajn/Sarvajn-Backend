@@ -3,7 +3,7 @@ import express, { type Express } from "express";
 import { config } from "../config";
 
 export const app: Express = express();
-app.set("x-powered-by", "sarvajn");
+app.disable("x-powered-by");
 
 export const database = new MongoDatabase(
     config.env.DATABASE_URL,

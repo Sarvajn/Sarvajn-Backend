@@ -4,7 +4,7 @@ import { AdminUser, AdminUserSchema } from "@sarvajn/schema";
 export class AdminUserCollection extends MongoCollection<AdminUser, typeof AdminUserSchema> {
     constructor() {
         super(
-            "users",
+            "admin_users",
             AdminUserSchema,
             [
                 { keys: { id: 1 }, options: { unique: true } },
