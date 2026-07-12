@@ -1,5 +1,5 @@
 {
-  "name": "@sarvajn/interface",
+  "name": "@sarvajn/mongo",
   "version": "0.1.0",
   "private": true,
   "license": "AGPL-3.0",
@@ -14,5 +14,9 @@
     "@types/node": "^22.15.3",
     "eslint": "^9.39.1",
     "typescript": "5.9.2"
+  },
+  "dependencies": {
+    "mongo": "^0.1.0",
+    "zod": "^4.4.3"
   }
 }
