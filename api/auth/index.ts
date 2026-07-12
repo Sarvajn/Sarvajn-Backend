@@ -1,14 +1,22 @@
-import "dotenv/config";
-import express, { type Express, type Request, type Response } from "express";
-const app: Express = express();
-app.disable("x-powered-by");
+import { app, database } from "./src/app"
+import { config } from "./config"
+import { initializeCollections } from "./src/db";
+import { logger } from "./src/utils/logger";
 
-const port = process.env.PORT || 1000;
 
-app.listen(port, () => {
-  console.log(`Auth server started on port ${port}`);
-});
+(async function bootstrap() {
+  // Initialize Database Connection
+  await database.connect();
+  logger.info("Database Connection Successful")
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!");
-});
+  // Get Database Object
+  const db = database.getDatabase();
+
+  // Initialize all Collections
+  await initializeCollections(db);
+  logger.info("Initialied collections for Auth-Service")
+
+  app.listen(config.env.PORT, () => {
+    logger.info(`Auth Service Started on Port ${config.env.PORT}`)
+  })
+})()

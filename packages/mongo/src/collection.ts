@@ -33,7 +33,6 @@ export abstract class MongoCollection<
 
   public async initialize(db: Db): Promise<void> {
     this.collection = db.collection<TDocument>(this.collectionName);
-
     await this.createIndexes();
   }
 
