@@ -1,6 +1,8 @@
 import { MongoCollection } from "@sarvajn/mongo";
 import { User, UserSchema } from "@sarvajn/schema";
 
+import bcrypt from "bcrypt";
+
 export class UserCollection extends MongoCollection<User, typeof UserSchema> {
   constructor() {
     super("users", UserSchema, [
@@ -11,6 +13,10 @@ export class UserCollection extends MongoCollection<User, typeof UserSchema> {
 
   public async create(user: User) {
     const validated = this.validate(user);
+
+    if (user.password) {
+      validated.password = await bcrypt.hash(user.password, 10);
+    }
 
     return this.collection.insertOne(validated);
   }

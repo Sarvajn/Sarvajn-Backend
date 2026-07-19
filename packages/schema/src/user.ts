@@ -13,7 +13,7 @@ const BaseUserSchema = z
   .extend(timestamp.shape);
 
 export const AdminUserSchema = BaseUserSchema.extend({
-  addedBy: z.number().nullable(),
+  addedBy: z.uuid().nullable(),
 });
 export type AdminUser = z.infer<typeof AdminUserSchema>;
 

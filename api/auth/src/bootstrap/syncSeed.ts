@@ -14,18 +14,19 @@ async function findOrCreateAdmin(admin: AdminSeed): Promise<void> {
     return;
   }
   try {
+    const password: string = generatePassword();
     await adminUsers.create({
       id: randomUUID(),
       name: admin.name,
       email: admin.email,
-      password: generatePassword(),
+      password: password,
       isActive: true,
       refreshToken: null,
       createdAt: new Date(),
       updatedAt: new Date(),
       addedBy: null,
     });
-    logger.info("Admin created", { admin });
+    logger.info("Admin created", { email: admin.email, password });
   } catch (error) {
     logger.error("Admin creation failed", { admin, error });
   }
