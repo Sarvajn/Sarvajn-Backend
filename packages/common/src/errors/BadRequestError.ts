@@ -1,4 +1,5 @@
 import { ApiError } from "./ApiError";
+import type { BaseErrorOptions } from "./BaseError";
 
 /**
  * HTTP 400 Bad Request Error.
@@ -6,10 +7,8 @@ import { ApiError } from "./ApiError";
 export class BadRequestError extends ApiError {
   constructor(
     message = "Bad Request",
-    code?: string,
-    details?: unknown,
-    cause?: unknown
+    options: BaseErrorOptions = {}
   ) {
-    super(400, message, code, details, cause);
+    super(400, message, options);
   }
 }

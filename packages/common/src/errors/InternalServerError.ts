@@ -1,4 +1,5 @@
 import { ApiError } from "./ApiError";
+import type { BaseErrorOptions } from "./BaseError";
 
 /**
  * HTTP 500 Internal Server Error.
@@ -6,10 +7,8 @@ import { ApiError } from "./ApiError";
 export class InternalServerError extends ApiError {
   constructor(
     message = "Internal server error",
-    code?: string,
-    details?: unknown,
-    cause?: unknown
+    options: BaseErrorOptions = {}
   ) {
-    super(500, message, code, details, cause);
+    super(500, message, options);
   }
 }

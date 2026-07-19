@@ -1,4 +1,5 @@
 import { ApiError } from "./ApiError";
+import type { BaseErrorOptions } from "./BaseError";
 
 /**
  * HTTP 403 Forbidden Error.
@@ -6,10 +7,8 @@ import { ApiError } from "./ApiError";
 export class ForbiddenError extends ApiError {
   constructor(
     message = "Forbidden",
-    code?: string,
-    details?: unknown,
-    cause?: unknown
+    options: BaseErrorOptions = {}
   ) {
-    super(403, message, code, details, cause);
+    super(403, message, options);
   }
 }

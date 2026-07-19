@@ -1,4 +1,5 @@
 import { ApiError } from "./ApiError";
+import type { BaseErrorOptions } from "./BaseError";
 
 /**
  * HTTP 404 Not Found Error.
@@ -6,10 +7,8 @@ import { ApiError } from "./ApiError";
 export class NotFoundError extends ApiError {
   constructor(
     message = "Resource not found",
-    code?: string,
-    details?: unknown,
-    cause?: unknown
+    options: BaseErrorOptions = {}
   ) {
-    super(404, message, code, details, cause);
+    super(404, message, options);
   }
 }

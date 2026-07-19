@@ -4,6 +4,10 @@ export interface BaseErrorOptions {
   cause?: unknown;
 }
 
+/**
+ * Base abstract error class for all application errors.
+ * Preserves the stack trace and automatically sets the error class name.
+ */
 export abstract class BaseError extends Error {
   public readonly statusCode: number;
   public readonly code?: string;

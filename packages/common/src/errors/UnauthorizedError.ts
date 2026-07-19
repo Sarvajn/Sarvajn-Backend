@@ -1,4 +1,5 @@
 import { ApiError } from "./ApiError";
+import type { BaseErrorOptions } from "./BaseError";
 
 /**
  * HTTP 401 Unauthorized Error.
@@ -6,10 +7,8 @@ import { ApiError } from "./ApiError";
 export class UnauthorizedError extends ApiError {
   constructor(
     message = "Unauthorized",
-    code?: string,
-    details?: unknown,
-    cause?: unknown
+    options: BaseErrorOptions = {}
   ) {
-    super(401, message, code, details, cause);
+    super(401, message, options);
   }
 }
