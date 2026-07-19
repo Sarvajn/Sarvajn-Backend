@@ -27,10 +27,12 @@ FROM node:24-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 
-COPY --from=builder /app/package.json /app/yarn.lock ./
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/packages ./packages
-COPY --from=builder /app/api/admin ./api/admin
+COPY --from=builder --chown=node:node /app/package.json /app/yarn.lock ./
+COPY --from=builder --chown=node:node /app/node_modules ./node_modules
+COPY --from=builder --chown=node:node /app/packages ./packages
+COPY --from=builder --chown=node:node /app/api/admin ./api/admin
+
+USER node
 
 WORKDIR /app/api/admin
 EXPOSE 3000
