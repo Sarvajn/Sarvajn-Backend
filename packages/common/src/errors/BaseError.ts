@@ -10,8 +10,8 @@ export interface BaseErrorOptions {
  */
 export abstract class BaseError extends Error {
   public readonly statusCode: number;
-  public readonly code?: string;
-  public readonly details?: unknown;
+  public readonly code: string | undefined;
+  public readonly details: unknown;
 
   constructor(
     statusCode: number,
