@@ -6,6 +6,19 @@ export type LogLevel = (typeof LOG_LEVELS)[number];
 
 export type LogContext = Record<string, unknown>;
 
+const jsonFormatter = winston.format.printf((info) => {
+  const { timestamp, level, service, message, context, stack } = info;
+
+  return JSON.stringify({
+    timestamp,
+    level,
+    service,
+    message,
+    ...(context ? { context } : {}),
+    ...(stack ? { stack } : {}),
+  });
+});
+
 export class Logger {
   private readonly logger: winston.Logger;
 
@@ -20,7 +33,7 @@ export class Logger {
       format: winston.format.combine(
         winston.format.timestamp(),
         winston.format.errors({ stack: true }),
-        winston.format.json(),
+        jsonFormatter,
       ),
 
       transports: [new winston.transports.Console()],
@@ -43,7 +56,11 @@ export class Logger {
     this.log("debug", message, context);
   }
 
-  private log(level: LogLevel, message: string, context?: LogContext): void {
+  private log(
+    level: LogLevel,
+    message: string,
+    context?: LogContext,
+  ): void {
     this.logger.log({
       level,
       message,

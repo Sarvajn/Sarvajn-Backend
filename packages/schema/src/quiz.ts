@@ -36,7 +36,7 @@ const BaseQuizSchema = z
     cutOff: z.number().min(0).max(100),
     // reshuffle: z.boolean().default(false),
   })
-  .extend(timestamp);
+  .extend(timestamp.shape);
 
 export const QuizSchema = z.discriminatedUnion("category", [
   BaseQuizSchema.extend({

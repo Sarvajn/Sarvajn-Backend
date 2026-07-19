@@ -28,4 +28,4 @@ export const QuizAttemptSchema = z
     bestScore: z.number().min(0).max(100),
     attempts: z.array(QuestionAttemptSchema),
   })
-  .extend(timestamp);
+  .extend(timestamp.shape);

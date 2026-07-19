@@ -8,7 +8,7 @@ const BaseModuleSchema = z
     title: z.string(),
     description: z.string().nullable(),
   })
-  .extend(timestamp);
+  .extend(timestamp.shape);
 
 export const AdminModuleSchema = BaseModuleSchema.extend({
   isPublished: z.boolean(),
