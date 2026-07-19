@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createConfig } from "@sarvajn/config";
+import { createConfig } from "@sarvajn/common";
 
 const environmentSchema = z.object({
   DATABASE_URL: z.string().min(1),
