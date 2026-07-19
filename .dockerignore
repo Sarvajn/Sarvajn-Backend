@@ -1,0 +1,7 @@
+.git
+node_modules
+dist
+.turbo
+.lerna
+*.log
+.DS_Store

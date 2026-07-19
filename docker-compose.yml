@@ -1,0 +1,61 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:8.0
+    container_name: sarvajn-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  auth-service:
+    build:
+      context: .
+      dockerfile: api/auth/Dockerfile
+    container_name: sarvajn-auth-service
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=mongodb://mongodb:27017/sarvajn_auth
+      - JWT_SECRET=super_secret_jwt_key_that_is_at_least_32_characters_long
+      - PORT=5000
+      - NODE_ENV=production
+    depends_on:
+      - mongodb
+
+  app-service:
+    build:
+      context: .
+      dockerfile: api/app/Dockerfile
+    container_name: sarvajn-app-service
+    ports:
+      - "2000:2000"
+    environment:
+      - PORT=2000
+      - NODE_ENV=production
+
+  admin-service:
+    build:
+      context: .
+      dockerfile: api/admin/Dockerfile
+    container_name: sarvajn-admin-service
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+
+  quiz-service:
+    build:
+      context: .
+      dockerfile: api/quiz/Dockerfile
+    container_name: sarvajn-quiz-service
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - NODE_ENV=production
+
+volumes:
+  mongo-data:
