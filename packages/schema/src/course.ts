@@ -11,7 +11,7 @@ const BaseCourseSchema = z
     thumbnail: z.string().nullable(),
     objective: z.array(z.string()),
   })
-  .extend(timestamp);
+  .extend(timestamp.shape);
 
 export const AdminCourseSchema = BaseCourseSchema.extend({
   isPublished: z.boolean(),

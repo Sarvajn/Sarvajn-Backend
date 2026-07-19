@@ -1,0 +1,10 @@
+{
+    "$schema": "./schema.json",
+    "admins":[
+        {
+            "id":1,
+            "name":"Anurag Bhatt",
+            "email":"anuragbhatt1805@gmail.com"
+        }
+    ]
+}

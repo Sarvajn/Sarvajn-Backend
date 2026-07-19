@@ -16,7 +16,7 @@ const BaseChapterSchema = z
     subtitle: z.string().nullable(),
     content: ChapterContentSchema,
   })
-  .extend(timestamp);
+  .extend(timestamp.shape);
 
 export const AdminChapterSchema = BaseChapterSchema.extend({
   isPublished: z.boolean(),
