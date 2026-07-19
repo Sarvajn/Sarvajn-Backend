@@ -34,6 +34,6 @@ export class MongoDatabase {
 
     public async disconnect(): Promise<void> {
         await this.client.close();
-        this.db = undefined;
+        delete this.db
     }
 }
