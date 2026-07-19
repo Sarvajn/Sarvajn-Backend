@@ -6,7 +6,7 @@
   "author": "Anurag Bhatt",
   "license": "AGPL-3.0",
   "dependencies": {
-    "@sarvajn/config": "0.1.0",
+    "@sarvajn/common": "0.1.0",
     "@sarvajn/logger": "0.1.0",
     "@sarvajn/mongo": "0.1.0",
     "@sarvajn/schema": "1.0.0",
