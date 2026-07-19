@@ -1,29 +1,26 @@
-/**
- * Base abstract error class for all application errors.
- * Preserves the stack trace and automatically sets the error class name.
- */
+export interface BaseErrorOptions {
+  code?: string;
+  details?: unknown;
+  cause?: unknown;
+}
+
 export abstract class BaseError extends Error {
   public readonly statusCode: number;
-  public readonly code?: string | undefined;
-  public readonly details?: unknown | undefined;
-  override readonly cause?: unknown | undefined;
+  public readonly code?: string;
+  public readonly details?: unknown;
 
   constructor(
     statusCode: number,
     message: string,
-    code?: string,
-    details?: unknown,
-    cause?: unknown
+    options: BaseErrorOptions = {}
   ) {
-    super(message);
-    this.statusCode = statusCode;
-    this.code = code;
-    this.details = details;
-    this.cause = cause;
-    this.name = this.constructor.name;
+    super(message, { cause: options.cause });
 
-    if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, this.constructor);
-    }
+    this.name = new.target.name;
+    this.statusCode = statusCode;
+    this.code = options.code;
+    this.details = options.details;
+
+    Error.captureStackTrace?.(this, new.target);
   }
 }
