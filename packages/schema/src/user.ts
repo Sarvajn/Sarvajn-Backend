@@ -14,6 +14,7 @@ const BaseUserSchema = z
 
 export const AdminUserSchema = BaseUserSchema.extend({
   addedBy: z.uuid().nullable(),
+  resetPassword: z.boolean().default(true)
 });
 export type AdminUser = z.infer<typeof AdminUserSchema>;
 

@@ -14,6 +14,10 @@ export class AdminUserCollection extends MongoCollection<
     ]);
   }
 
+  // private async hashPassword(password: string){
+    
+  // }
+
   public async create(user: AdminUser) {
     const validated = this.validate(user);
 
@@ -27,4 +31,10 @@ export class AdminUserCollection extends MongoCollection<
   public async findByEmail(email: string) {
     return this.collection.findOne({ email });
   }
+
+  // public async upsert(user: AdminUser){
+  //   const validated = this.validate(user);
+
+  //   if (user.password)
+  // }
 }

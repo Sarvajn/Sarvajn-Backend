@@ -1,3 +1,4 @@
+import { StatusCodes } from "http-status-codes";
 import { ApiError } from "./ApiError";
 
 import type { BaseErrorOptions } from "./BaseError";
@@ -10,6 +11,6 @@ export class ConflictError extends ApiError {
     message = "Conflict",
     options: BaseErrorOptions = {}
   ) {
-    super(409, message, options);
+    super(StatusCodes.CONFLICT, message, options);
   }
 }

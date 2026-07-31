@@ -25,6 +25,7 @@ async function findOrCreateAdmin(admin: AdminSeed): Promise<void> {
       createdAt: new Date(),
       updatedAt: new Date(),
       addedBy: null,
+      resetPassword: true
     });
     logger.info("Admin created", { email: admin.email, password });
   } catch (error) {

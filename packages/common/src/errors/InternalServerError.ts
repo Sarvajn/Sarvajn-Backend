@@ -1,3 +1,4 @@
+import { StatusCodes } from "http-status-codes";
 import { ApiError } from "./ApiError";
 import type { BaseErrorOptions } from "./BaseError";
 
@@ -9,6 +10,6 @@ export class InternalServerError extends ApiError {
     message = "Internal server error",
     options: BaseErrorOptions = {}
   ) {
-    super(500, message, options);
+    super(StatusCodes.INTERNAL_SERVER_ERROR, message, options);
   }
 }
