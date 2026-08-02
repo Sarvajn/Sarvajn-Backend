@@ -1,3 +1,4 @@
+import { StatusCodes } from "http-status-codes";
 import { ApiError } from "./ApiError";
 import type { BaseErrorOptions } from "./BaseError";
 
@@ -9,6 +10,6 @@ export class BadRequestError extends ApiError {
     message = "Bad Request",
     options: BaseErrorOptions = {}
   ) {
-    super(400, message, options);
+    super(StatusCodes.BAD_REQUEST, message, options);
   }
 }

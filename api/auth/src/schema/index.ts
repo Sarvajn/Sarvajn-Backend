@@ -1,1 +1,1 @@
-export * from "./adminSeed.schema";
+export * from "./admin/adminSeed.schema";

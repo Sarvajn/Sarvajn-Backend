@@ -20,6 +20,11 @@ import { logger } from "./src/utils/logger";
   await syncSeed();
 
   app.listen(config.env.PORT, () => {
-    logger.info(`Auth Service Started on Port ${config.env.PORT}`)
+    logger.info(`Auth Service Started on Port ${config.env.PORT.toString()}`)
   })
-})()
+})().catch((err: unknown) => {
+  logger.error("Failed to start Auth Service", {
+    err
+  })
+  process.exit(1);
+})

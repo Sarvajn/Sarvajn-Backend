@@ -1,3 +1,4 @@
+import { StatusCodes } from "http-status-codes";
 import { ApiError } from "./ApiError";
 import type { BaseErrorOptions } from "./BaseError";
 
@@ -9,6 +10,6 @@ export class NotFoundError extends ApiError {
     message = "Resource not found",
     options: BaseErrorOptions = {}
   ) {
-    super(404, message, options);
+    super(StatusCodes.NOT_FOUND, message, options);
   }
 }

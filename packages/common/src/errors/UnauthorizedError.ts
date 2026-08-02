@@ -1,3 +1,4 @@
+import { StatusCodes } from "http-status-codes";
 import { ApiError } from "./ApiError";
 import type { BaseErrorOptions } from "./BaseError";
 
@@ -9,6 +10,6 @@ export class UnauthorizedError extends ApiError {
     message = "Unauthorized",
     options: BaseErrorOptions = {}
   ) {
-    super(401, message, options);
+    super(StatusCodes.UNAUTHORIZED, message, options);
   }
 }

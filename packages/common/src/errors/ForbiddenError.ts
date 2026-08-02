@@ -1,3 +1,4 @@
+import { StatusCodes } from "http-status-codes";
 import { ApiError } from "./ApiError";
 import type { BaseErrorOptions } from "./BaseError";
 
@@ -9,6 +10,6 @@ export class ForbiddenError extends ApiError {
     message = "Forbidden",
     options: BaseErrorOptions = {}
   ) {
-    super(403, message, options);
+    super(StatusCodes.FORBIDDEN, message, options);
   }
 }

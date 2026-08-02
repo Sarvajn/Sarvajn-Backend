@@ -1,3 +1,4 @@
+import { ConflictError, InternalServerError } from "@sarvajn/common";
 import { MongoCollection } from "@sarvajn/mongo";
 import { AdminUser, AdminUserSchema } from "@sarvajn/schema";
 
@@ -14,14 +15,37 @@ export class AdminUserCollection extends MongoCollection<
     ]);
   }
 
-  public async create(user: AdminUser) {
-    const validated = this.validate(user);
+  private async hashPassword(password: string){
+    return await bcrypt.hash(password, 10)
+  }
 
-    if (user.password) {
-      validated.password = await bcrypt.hash(user.password, 10);
+  public async create(user: AdminUser) {
+    const existingUser = await this.findByEmail(user.email);
+
+    if (existingUser) {
+      throw new ConflictError("User Already Exist", {
+        details: {
+          existingUser: {
+            id: existingUser.id,
+            email: existingUser.email
+          }
+        },
+      })
     }
 
-    return this.collection.insertOne(validated);
+    const validatedData = this.validate(user);
+
+    if (validatedData.password) {
+      validatedData.password = await this.hashPassword(validatedData.password);
+    }
+
+    try {
+      return await this.collection.insertOne(validatedData)
+    } catch (err: unknown) {
+      throw new InternalServerError("Failed to Create Admin User", {
+        details: err
+      })
+    }
   }
 
   public async findByEmail(email: string) {
