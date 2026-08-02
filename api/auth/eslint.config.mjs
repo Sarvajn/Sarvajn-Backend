@@ -9,13 +9,21 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 /** @type {import("eslint").Linter.Config[]} */
 export default [
   {
+    ignores: [
+      "eslint.config.mjs",
+      "node_modules",
+      "dist",
+    ],
+  },
+
+  {
     files: ["**/*.{js,mjs,cjs,ts}"],
     languageOptions: {
       globals: globals.node,
       parserOptions: {
         project: true,
         tsconfigRootDir: __dirname,
-      },
+      },  
     },
   },
 
