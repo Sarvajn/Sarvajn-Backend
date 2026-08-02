@@ -16,7 +16,7 @@ export class UserCollection extends MongoCollection<User, typeof UserSchema> {
     return await bcrypt.hash(password, 10)
   }
 
-  public async findOrCreate(user: User) {
+  public async create(user: User) {
     const existingUser = await this.findByEmail(user.email);
 
     if (existingUser) {

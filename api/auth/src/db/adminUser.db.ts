@@ -19,7 +19,7 @@ export class AdminUserCollection extends MongoCollection<
     return await bcrypt.hash(password, 10)
   }
 
-  public async findOrCreate(user: AdminUser) {
+  public async create(user: AdminUser) {
     const existingUser = await this.findByEmail(user.email);
 
     if (existingUser) {

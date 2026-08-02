@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 async function seedAdmin(admin: AdminSeed): Promise<void> {
   try {
     const password: string = generatePassword();
-    await adminUsers.findOrCreate({
+    await adminUsers.create({
       id: uuidv4(),
       name: admin.name,
       email: admin.email,
